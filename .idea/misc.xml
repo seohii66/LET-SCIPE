@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alice/Documents/2022/term1/IPS2022/LET-SCIPE/app/src/main/res/drawable/ic_launcher_background.xml" value="0.153" />
         <entry key="..\:/Users/alice/Documents/2022/term1/IPS2022/LET-SCIPE/app/src/main/res/font/font.xml" value="0.1" />
         <entry key="..\:/Users/alice/Documents/2022/term1/IPS2022/LET-SCIPE/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/alice/Documents/2022/term1/IPS2022/LET-SCIPE/app/src/main/res/layout/cam_activity.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/alice/Documents/2022/term1/IPS2022/LET-SCIPE/app/src/main/res/layout/intro_activity.xml" value="0.12132725430597771" />
         <entry key="..\:/Users/alice/Documents/2022/term1/IPS2022/LET-SCIPE/app/src/main/res/layout/recipe_list.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/alice/Documents/2022/term1/IPS2022/LET-SCIPE/app/src/main/res/layout/refrige_activity.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/alice/Documents/2022/term1/IPS2022/LET-SCIPE/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.153" />
       </map>
     </option>
   </component>
