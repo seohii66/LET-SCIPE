@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.letscipe">
 
+    // CamActivity 추가사항
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,14 +17,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LETSCIPE">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".IntroActivity"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"
+        android:theme="@style/SplashTheme"/>
+        <activity android:name=".CamActivity"
+            android:theme="@style/SplashTheme"/>
+
+        //CamActivity 추가
+        <provider
+            android:authorities="com.example.letscipe"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+        <activity android:name=".FridgeActivity"
+            android:theme="@style/SplashTheme"/>
+        <activity android:name=".RecipeActivity"
+            android:theme="@style/SplashTheme"/>
     </application>
 
 </manifest>
