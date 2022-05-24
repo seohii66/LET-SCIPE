@@ -1,3 +1,5 @@
+/* 레시피 목록 출력 확인용 샘플 데이터
+
 package com.example.letscipe;
 
 import java.util.ArrayList;
@@ -23,4 +25,4 @@ public class SampleRecipeData {
 
         return items;
     }
-}
+}*/

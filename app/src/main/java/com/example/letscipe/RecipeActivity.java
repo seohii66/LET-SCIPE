@@ -15,7 +15,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RecipeActivity extends AppCompatActivity {
+
+    public ArrayList<Recipe> recipeList;
+
+    private void initLoadDb(){
+        DataAdapter mDbHelper = new DataAdapter(getApplicationContext());
+        mDbHelper.createDatabase();
+        mDbHelper.open();
+
+        recipeList = mDbHelper.getRecipeTableData();
+
+        mDbHelper.close();
+    }
 
     private RecipeAdapter adapter = new RecipeAdapter();
 
@@ -41,6 +56,7 @@ public class RecipeActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //아이템 로드
-        adapter.setItems(new SampleRecipeData().getItems());
+        initLoadDb();
+        adapter.setItems(recipeList);
     }
 }

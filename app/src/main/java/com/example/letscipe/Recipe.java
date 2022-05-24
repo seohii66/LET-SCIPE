@@ -11,13 +11,13 @@ public class Recipe {
     private String linkUrl;
     private String imgUrl;
 
-    public Recipe(int index, int ingredientNum, String dishName, String linkUrl, String imgUrl){
+    /*public Recipe(int index, int ingredientNum, String dishName, String linkUrl, String imgUrl){
         this.index = index;
         this.ingredientNum = ingredientNum;
         this.dishName = dishName;
         this.linkUrl = linkUrl;
         this.imgUrl = imgUrl;
-    }
+    }*/
 
     public int getIndex() {
         return index;
