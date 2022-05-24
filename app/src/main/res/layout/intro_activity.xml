@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--앱 처음 실행시 나타나는 앱 이름 layout파일입니다.-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity = "center">
+
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:src = "@drawable/logo"
+        android:layout_gravity="center"/>
+</LinearLayout>
