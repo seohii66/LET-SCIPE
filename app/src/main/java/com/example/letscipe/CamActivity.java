@@ -50,7 +50,7 @@ public class CamActivity extends AppCompatActivity {
         ingredientList.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(),RefrigeActivity.class);                ;
+                Intent intent = new Intent(getApplicationContext(),FridgeActivity.class);                ;
                 startActivity(intent);
             }
         });

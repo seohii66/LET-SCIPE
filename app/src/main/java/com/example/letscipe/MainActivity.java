@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 레시피 버튼
         ImageButton imageButton_recipe = (ImageButton) findViewById(R.id.imageButton_recipe);
         imageButton_recipe.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //카메라버튼
+        // 카메라 버튼
         ImageButton imageButton_cam = (ImageButton) findViewById(R.id.imageButton_cam);
         imageButton_cam.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -32,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 냉장고 버튼
         ImageButton imageButton_ref = (ImageButton) findViewById(R.id.imageButton_ref);
         imageButton_ref.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(),RefrigeActivity.class);
+                Intent intent = new Intent(getApplicationContext(),FridgeActivity.class);
                 startActivity(intent);
             }
         });
