@@ -4,10 +4,17 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+@Entity(tableName = "ingredient")
 public class Ingredient {
+
+    @ColumnInfo(name="ingredientName")
     public String ingredientName;
-    public int index;
-    public int id;
+
+    @ColumnInfo(name="recipeIndex")
+    public int recipeIndex;
+
+    @PrimaryKey(autoGenerate = true)
+    public int ingredientId;
 
     public String getIngredientName() {
         return ingredientName;
@@ -18,18 +25,18 @@ public class Ingredient {
     }
 
     public int getIndex() {
-        return index;
+        return recipeIndex;
     }
 
     public void setIndex(int index) {
-        this.index = index;
+        this.recipeIndex = index;
     }
 
     public int getId() {
-        return id;
+        return ingredientId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.ingredientId = id;
     }
 }

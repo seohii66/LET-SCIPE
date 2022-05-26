@@ -12,6 +12,9 @@ public interface FridgeDao {
     @Query("SELECT * FROM fridge")
     List<Fridge> getALL();
 
+    @Query("SELECT ingredient FROM fridge")
+    List<String> getALLIngredient();
+
     @Insert
     void insert(Fridge fridge);
 
@@ -21,6 +24,6 @@ public interface FridgeDao {
     @Delete
     void reset(List<Fridge> fridges);
 
-    @Query("UPDATE fridge SET ingredient = :sText WHERE ID = :sID")
+    @Query("UPDATE fridge SET ingredient = :sText WHERE fridgeId = :sID")
     void update(int sID, String sText);
 }

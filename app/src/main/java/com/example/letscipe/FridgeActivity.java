@@ -5,6 +5,7 @@ package com.example.letscipe;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -21,11 +22,31 @@ import java.util.List;
 
 public class FridgeActivity extends AppCompatActivity {
 
+    public ArrayList<Ingredient> ingredientList;
+
     RecyclerView recyclerView;
 
     List<Fridge> dataList = new ArrayList<>();
+    List<Recipe> recipeList = new ArrayList<>();
+    /*List<String> fridgeIngredientList = new ArrayList<>();
+    List<Integer> recipeIndexList = new ArrayList<>();
+    List<Integer> recipeIndexList2 = new ArrayList<>();
+    List<Recipe> recipeList = new ArrayList<>();*/
+
     MyRoomDb database;
     FridgeAdapter adapter;
+
+    private void initLoadDb(){
+        DataAdapter mDbHelper = new DataAdapter(getApplicationContext());
+        mDbHelper.createDatabase();
+        mDbHelper.open();
+
+        ingredientList = mDbHelper.getIngredientTableData();
+        recipeList = mDbHelper.getRecipeTableData();
+
+        mDbHelper.close();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +57,7 @@ public class FridgeActivity extends AppCompatActivity {
 
         database = MyRoomDb.getInstance(this);
         dataList = database.fridgeDao().getALL();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FridgeAdapter(FridgeActivity.this, dataList);
         recyclerView.setAdapter(adapter);
@@ -67,8 +89,10 @@ public class FridgeActivity extends AppCompatActivity {
                     edit_text.setText("");
 
                     dataList.clear();
+
                     dataList.addAll(database.fridgeDao().getALL());
-                    adapter.notifyDataSetChanged();;
+
+                    adapter.notifyDataSetChanged();
                 }
             }
         });
@@ -91,6 +115,11 @@ public class FridgeActivity extends AppCompatActivity {
         recipeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                // 알고리즘 클래스로 넘기기
+                initLoadDb();
+                SelectRecipeAlgo selectRecipeAlgo = new SelectRecipeAlgo();
+                selectRecipeAlgo.selectRecipe(ingredientList, recipeList);
+
                 Intent intent = new Intent(getApplicationContext(),RecipeActivity.class);                ;
                 startActivity(intent);
             }

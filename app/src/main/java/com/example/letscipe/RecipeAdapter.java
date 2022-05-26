@@ -1,5 +1,7 @@
 package com.example.letscipe;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,18 @@ import java.util.List;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
     private ArrayList<Recipe> items = new ArrayList<>();
+
+    public interface OnItemClickListener {
+        void onItemClick(View v, int position);
+    }
+
+    private OnItemClickListener mListener = null;
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
+
+
 
     @NonNull
     @Override
@@ -56,6 +70,19 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
             ivRecipe = itemView.findViewById(R.id.iv_item_recipe);
             dishName = itemView.findViewById(R.id.item_recipe_title);
+
+            // 아이템 클릭 이벤트 처리
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        if(mListener!=null){
+                            mListener.onItemClick(v, pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }

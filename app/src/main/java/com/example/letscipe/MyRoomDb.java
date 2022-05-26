@@ -8,13 +8,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Fridge.class}, version = 1, exportSchema = false)
+@Database(entities = {Fridge.class, Ingredient.class, Recipe.class}, version = 1, exportSchema = false)
 public abstract class MyRoomDb extends RoomDatabase {
 
     private static MyRoomDb INSTANCE = null;
 
     public abstract FridgeDao fridgeDao();
-
+    public abstract IngredientDao ingredientDao();
+    public abstract  RecipeDao recipeDao();
 
     public synchronized static MyRoomDb getInstance(Context context){
         if(INSTANCE == null){

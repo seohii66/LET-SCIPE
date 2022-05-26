@@ -4,15 +4,27 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+@Entity(tableName = "recipe")
 public class Recipe {
-    private int index;
+
+    @PrimaryKey
+    @ColumnInfo(name="recipeIndex")
+    private int recipeIndex;
+
+    @ColumnInfo(name="ingredientNum")
     private int ingredientNum;
+
+    @ColumnInfo(name="dishName")
     private String dishName;
+
+    @ColumnInfo(name="linkUrl")
     private String linkUrl;
+
+    @ColumnInfo(name="imgUrl")
     private String imgUrl;
 
     /*public Recipe(int index, int ingredientNum, String dishName, String linkUrl, String imgUrl){
-        this.index = index;
+        this.recipeIndex = index;
         this.ingredientNum = ingredientNum;
         this.dishName = dishName;
         this.linkUrl = linkUrl;
@@ -20,11 +32,11 @@ public class Recipe {
     }*/
 
     public int getIndex() {
-        return index;
+        return recipeIndex;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setIndex(int recipeIndex) {
+        this.recipeIndex = recipeIndex;
     }
 
     public int getIngredientNum() {

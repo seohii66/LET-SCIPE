@@ -4,6 +4,7 @@ package com.example.letscipe;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -20,24 +21,24 @@ import java.util.List;
 
 public class RecipeActivity extends AppCompatActivity {
 
-    public ArrayList<Recipe> recipeList;
+    //public ArrayList<Recipe> recipeList;
+    String linkURL = null;
 
-    private void initLoadDb(){
-        DataAdapter mDbHelper = new DataAdapter(getApplicationContext());
-        mDbHelper.createDatabase();
-        mDbHelper.open();
+    SelectRecipeAlgo selectRecipeAlgo = new SelectRecipeAlgo();
+    public ArrayList<Recipe> selectedRecipeList;
 
-        recipeList = mDbHelper.getRecipeTableData();
 
-        mDbHelper.close();
-    }
 
+    MyRoomDb database;
     private RecipeAdapter adapter = new RecipeAdapter();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_list);
+
+        database = MyRoomDb.getInstance(this);
+        selectedRecipeList = selectRecipeAlgo.selectedRecipeList;
 
         // home 버튼
         ImageButton homeBtn = (ImageButton) findViewById(R.id.homeBtn);
@@ -56,7 +57,20 @@ public class RecipeActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //아이템 로드
-        initLoadDb();
-        adapter.setItems(recipeList);
+        adapter.setItems(selectedRecipeList);
+
+
+
+        // 아이템 클릭 이벤트
+        adapter.setOnItemClickListener(new RecipeAdapter.OnItemClickListener() {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            @Override
+            public void onItemClick(View v, int position) {
+                Recipe recipe = selectedRecipeList.get(position);
+                linkURL = recipe.getLinkUrl();
+                intent.setData(Uri.parse(linkURL)); //동영상 URL link
+                startActivity(intent);
+            }
+        });
     }
 }
