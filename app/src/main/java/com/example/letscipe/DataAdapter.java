@@ -101,7 +101,7 @@ public class DataAdapter {
 
                     // TODO : Record 기술
                     // index, ingredientNum, dishName, linkUrl, imgUrl
-                    recipe.setIndex(mCur.getInt(0));
+                    recipe.setRecipeIndex(mCur.getInt(0));
                     recipe.setIngredientNum(mCur.getInt(1));
                     recipe.setDishName(mCur.getString(2));
                     recipe.setLinkUrl(mCur.getString(3));

@@ -7,7 +7,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "recipe")
 public class Recipe {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    public int recipeId;
+
     @ColumnInfo(name="recipeIndex")
     private int recipeIndex;
 
@@ -30,12 +32,19 @@ public class Recipe {
         this.linkUrl = linkUrl;
         this.imgUrl = imgUrl;
     }*/
+    public int getRecipeId() {
+        return recipeId;
+    }
 
-    public int getIndex() {
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public int getRecipeIndex() {
         return recipeIndex;
     }
 
-    public void setIndex(int recipeIndex) {
+    public void setRecipeIndex(int recipeIndex) {
         this.recipeIndex = recipeIndex;
     }
 

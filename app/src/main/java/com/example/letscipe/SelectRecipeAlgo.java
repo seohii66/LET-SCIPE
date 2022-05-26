@@ -58,13 +58,19 @@ public class SelectRecipeAlgo {
         for(int i = 0; i<6; i++){
             switch (indexCount.get(i) - ingredientNumList.get(i)){
                 case 0:
-                    selectedRecipeList=database.recipeDao().selectRecipe(i+1); //add 써야할거같은디
+                    database.recipeDao().selectRecipe(i+1); //add 써야할거같은디
+                    selectedRecipeList.clear();
+                    selectedRecipeList.addAll(database.recipeDao().getALL());
                     break;
                 case 1:
-                    selectedRecipeList = database.recipeDao().selectRecipe(i+1);
+                    database.recipeDao().selectRecipe(i+1); //add 써야할거같은디
+                    selectedRecipeList.clear();
+                    selectedRecipeList.addAll(database.recipeDao().getALL());
                     break;
                 case 2:
-                    selectedRecipeList = database.recipeDao().selectRecipe(i+1);
+                    database.recipeDao().selectRecipe(i+1); //add 써야할거같은디
+                    selectedRecipeList.clear();
+                    selectedRecipeList.addAll(database.recipeDao().getALL());
                     break;
             }
         }

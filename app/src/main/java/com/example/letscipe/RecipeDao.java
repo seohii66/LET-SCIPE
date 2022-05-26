@@ -27,5 +27,5 @@ public interface RecipeDao {
     void delete(Recipe recipe);
 
     @Query("SELECT * FROM recipe WHERE recipeIndex = :sIndex")
-    ArrayList<Recipe> selectRecipe(int sIndex);
+    Recipe selectRecipe(int sIndex);
 }
